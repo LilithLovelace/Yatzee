@@ -41,6 +41,13 @@ struct player
 	int rolls;
 	char name[32];
 };
+/**********************************************
+*Function: posibilitys
+* Descripiton: presents the player with the potential catagories they could choose
+* input Parameters: struct player* playerArr, int* diceRolls, int playerNum
+* Output: void
+***********************************************/
+possibilitys(struct player* playerArr, int* diceRolls, int playerNum);
 
 /************************************************
 * Fucntion Player Catagories
