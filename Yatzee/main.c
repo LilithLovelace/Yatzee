@@ -13,11 +13,10 @@ int main(void) {
 		playersLoop = 0, //this keeps track of the player currently playing
 		typeOfRoll = 0,  
 		dies[5] = 0; //This holds the vaule of the die for each roll
-	char names[32]="";
-	char* p = names;
+	struct player playerArr[6] = NULL;
 	printf("Please enter the number of Player(Max 6).");
 	scanf("%d", &playerNumv);
-	struct player playerArr[6];
+	
 
 	
 	
@@ -36,15 +35,8 @@ int main(void) {
 			printf("Please press any key to start the game!");
 			//This makes the player press any key
 			scanf("");
-			//Sets vauls for player Stuct
-			for (int i = 0; i < playerNumv; i++) {
-				
-				*p = playerNames();
-				playerArr[i].points = 0;
-				playerArr[i].name == *p;
-				
-				playerColor(playerArr[i].name);
-			}
+			for (; playersLoop < playerNumv; playersLoop++) {
+				playerArr[playersLoop] = newPlayer();
 			for (; roundsLoop < 13; roundsLoop++) {
 				for (; playersLoop < playerNumv; playersLoop++) {
 					startTurn();
@@ -52,8 +44,8 @@ int main(void) {
 					//This makes the player press any key
 					scanf("");
 					while (playersTurn)
-					typeOfRoll = possibility(dies);
-					playerCat(playerArr, typeOfRoll, playersLoop)
+					typeOfRoll = possibility(dies, playerArr[playersLoop].catagories);
+					playerCat(playerArr, playerNumv, typeOfRoll);
 				}
 			}
 

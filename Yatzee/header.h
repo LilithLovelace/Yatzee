@@ -4,6 +4,11 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define TRUE 1
+#define FALSE 0
 
 //This is for the the catorical definitons
 #define TOK	7
@@ -41,6 +46,15 @@ struct player
 	int rolls;
 	char name[32];
 };
+
+/**********************************************************
+* Function: New Player
+* Description: Creates a new player type with the default data structure
+* Input Parameters: Void
+* Output Parameters: player newPlayer
+**************************************************************/
+struct player newPlayer(void);
+
 /**********************************************
 *Function: posibilitys
 * Descripiton: presents the player with the potential catagories they could choose
@@ -88,7 +102,7 @@ void printMenu(void);
 * Input Parameter: int start, int end
 * Output Parameter: selection
 * ***************************************************/
-numGetter(int start, int end);
+numGetter( int end);
 
 /*********************************************************
 * Function: Player Names
@@ -96,5 +110,5 @@ numGetter(int start, int end);
 * Input Parameters: Void
 * Output Parameters: char[32]
 ************************************************************/
-char* playerNames(void);
+char* playerNames(struct player PlayerArr[], int playerNum);
 #endif 
