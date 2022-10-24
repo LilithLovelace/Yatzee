@@ -1,6 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
-#define _CTR_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
@@ -41,11 +41,20 @@
 struct player
 {
 	int catagories[13];
-	int color;
+	char color[8];
 	int points;
 	int rolls;
 	char name[32];
 };
+
+void initPosArr(int* posArr[], int playerNum);
+/**********************************************************
+*Function: Roll Dice
+* Description: Rolls a set of five dice
+* Input Parameters: Void
+* Output Parameters: Int Pointer
+***********************************************************/
+int* rollDice(int *dice[], int number);
 
 /**********************************************************
 * Function: New Player
@@ -61,7 +70,7 @@ struct player newPlayer(void);
 * input Parameters: struct player* playerArr, int* diceRolls, int playerNum
 * Output: void
 ***********************************************/
-possibilitys(struct player* playerArr, int* diceRolls, int playerNum);
+void possibility(int* dice, int* pos);
 
 /************************************************
 * Fucntion Player Catagories
@@ -69,11 +78,10 @@ possibilitys(struct player* playerArr, int* diceRolls, int playerNum);
 * Input Parameters: *player[], int playerNumber, int typeUsed
 * Output: Void
 *************************************************/
-playerCat(struct player* playArr, int playerNumber, int typeUsed);
+playerCat(struct player* currentPlayer,  int posArr[]);
 /*************************************************
 *Function: Player Color
-* Description: Obtains a color for each player in the game while
-  preventing the same color form being used
+* Description: Obtains a color for each player in the game 
 * Input Parameters: Int* list, int numOfPlay
 * Output Conditition: Int*
 * Output Parameters: int complete
@@ -111,4 +119,39 @@ numGetter( int end);
 * Output Parameters: char[32]
 ************************************************************/
 char* playerNames(struct player PlayerArr[], int playerNum);
+
+
+/**********************************************************
+*Function: Set Color
+* Descripton: Sets the conssol to the color chossen by the player
+* Input Parameters: int color
+* Output: Void
+***********************************************************/
+void setColor(char* color);
+
+/******************************************
+*Function: playerScores
+* Description: sets the players score based on the choice
+* Input Parameters: int choice,
+* Output Parameters: int score
+* *****************************************/
+int playerScore(int choice, int* dice);
+
+/******************************************
+*Function: Display Dice
+* Discription: Shows the result of the dice rolls
+* Input Parameters: int dice[6]
+* Output Parameters: void
+********************************************/
+void displayDice(int* dice);
+
+/*****************************************
+*Funtion: endOfGame
+* Description: displays the points for the end of the game and who won
+* Input Parameters, int playerNumber, struct player[]
+* Output Void
+* *******************************************/
+void endOfGame(int playerNumber, struct player* playerArr);
+
+void bubbleSort(int* list, int size);
 #endif 
